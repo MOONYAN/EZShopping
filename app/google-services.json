@@ -1,0 +1,182 @@
+{
+  "project_info": {
+    "project_number": "832321715289",
+    "firebase_url": "https://ez-shopping-db.firebaseio.com",
+    "project_id": "ez-shopping-db",
+    "storage_bucket": "ez-shopping-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832321715289:android:9479ace5de110637",
+        "android_client_info": {
+          "package_name": "net.macdidi.hellofirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832321715289-v3h0ssch0undncbp607vs18l0gr5shqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiapmIzCK_pnF6_LUXNZLI60R9qQPa8r4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832321715289:android:14f433d85bd6591a",
+        "android_client_info": {
+          "package_name": "com.example.googlesignin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832321715289-jhtdntvfj3k51h71a2nepl0muvlcd657.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.googlesignin",
+            "certificate_hash": "EA0F3F3880F37A728579A17B877870AF536B17EA"
+          }
+        },
+        {
+          "client_id": "832321715289-v3h0ssch0undncbp607vs18l0gr5shqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiapmIzCK_pnF6_LUXNZLI60R9qQPa8r4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832321715289:android:87fcb66cc6ca320a",
+        "android_client_info": {
+          "package_name": "com.google.firebase.quickstart.auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832321715289-n2jmcc2agrf5q963r8g59qlbabg4k2v5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.quickstart.auth",
+            "certificate_hash": "EA0F3F3880F37A728579A17B877870AF536B17EA"
+          }
+        },
+        {
+          "client_id": "832321715289-v3h0ssch0undncbp607vs18l0gr5shqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiapmIzCK_pnF6_LUXNZLI60R9qQPa8r4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832321715289:android:fcfef757a832647b",
+        "android_client_info": {
+          "package_name": "com.google.firebase.quickstart.database"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832321715289-v3h0ssch0undncbp607vs18l0gr5shqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiapmIzCK_pnF6_LUXNZLI60R9qQPa8r4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832321715289:android:f8f39c2dfa75630f",
+        "android_client_info": {
+          "package_name": "tw.edu.ntut.ezshopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832321715289-v3h0ssch0undncbp607vs18l0gr5shqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiapmIzCK_pnF6_LUXNZLI60R9qQPa8r4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
