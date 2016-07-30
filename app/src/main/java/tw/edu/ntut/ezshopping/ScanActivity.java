@@ -89,7 +89,7 @@ public class ScanActivity extends BaseActivity
                 {
                     Log.w(TAG, "getProduct:onCancelled", databaseError.toException());
                     _product = null;
-                    setDefaultUI();
+                    setDefaultState();
                 }
             });
         }
@@ -114,9 +114,11 @@ public class ScanActivity extends BaseActivity
         _unitPriceText.setText(_product.UnitPrice + "");
     }
 
-    private void setDefaultUI()
+    private void setDefaultState()
     {
         hideProgressDialog();
+        _scanFormatText.setText(null);
+        _scanContentText.setText(null);
         _productId = null;
         _product = null;
         _resulLayout.setVisibility(View.GONE);
@@ -130,6 +132,6 @@ public class ScanActivity extends BaseActivity
         Cart cart = Model.getInstance().getCart();
         cart.addToCart(_productId, _product);
         Toast.makeText(this,"complete",Toast.LENGTH_SHORT);
-        setDefaultUI();
+        setDefaultState();
     }
 }
