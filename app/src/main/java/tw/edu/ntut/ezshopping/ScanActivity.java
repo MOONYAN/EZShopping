@@ -25,6 +25,7 @@ public class ScanActivity extends BaseActivity
     private TextView _nameText;
     private TextView _unitPriceText;
     private Product _product;
+    private String _productId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -70,8 +71,8 @@ public class ScanActivity extends BaseActivity
             _scanFormatText.setText(scanFormat);
             Log.d("----------", "onActivityResult: has something");
             Toast.makeText(this, "test" + scanContent, Toast.LENGTH_SHORT).show();
-            final String productId = scanContent;
-            FirebaseDatabase.getInstance().getReference("product/" + productId).addListenerForSingleValueEvent(new ValueEventListener()
+            _productId = scanContent;
+            FirebaseDatabase.getInstance().getReference("product/" + _productId).addListenerForSingleValueEvent(new ValueEventListener()
             {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot)
@@ -88,7 +89,7 @@ public class ScanActivity extends BaseActivity
                 {
                     Log.w(TAG, "getProduct:onCancelled", databaseError.toException());
                     _product = null;
-                    updateUI();
+                    setDefaultUI();
                 }
             });
         }
@@ -107,24 +108,28 @@ public class ScanActivity extends BaseActivity
     private void updateUI()
     {
         hideProgressDialog();
-        if (_product == null)
-        {
-            _resulLayout.setVisibility(View.GONE);
-            _imageURLText.setText(null);
-            _nameText.setText(null);
-            _unitPriceText.setText(null);
-        }
-        else
-        {
-            _resulLayout.setVisibility(View.VISIBLE);
-            _imageURLText.setText(_product.ImageURL);
-            _nameText.setText(_product.Name);
-            _unitPriceText.setText(_product.UnitPrice+"");
-        }
+        _resulLayout.setVisibility(View.VISIBLE);
+        _imageURLText.setText(_product.ImageURL);
+        _nameText.setText(_product.Name);
+        _unitPriceText.setText(_product.UnitPrice + "");
+    }
+
+    private void setDefaultUI()
+    {
+        hideProgressDialog();
+        _productId = null;
+        _product = null;
+        _resulLayout.setVisibility(View.GONE);
+        _imageURLText.setText(null);
+        _nameText.setText(null);
+        _unitPriceText.setText(null);
     }
 
     public void addOnClick(View view)
     {
-        
+        Cart cart = Model.getInstance().getCart();
+        cart.addToCart(_productId, _product);
+        Toast.makeText(this,"complete",Toast.LENGTH_SHORT);
+        setDefaultUI();
     }
 }

@@ -13,7 +13,7 @@ public class Cart
 {
     public HashMap<String, CartItem> CartMap;
 
-    public int TotalCost;
+    public int TotalCost = 0;
 
     public Cart()
     {
@@ -27,9 +27,17 @@ public class Cart
         updateTotalCost();
     }
 
-    public void addToCart(String productId,Product product)
+    public void addToCart(String productId, Product product)
     {
-
+        CartItem cartItem = CartMap.get(productId);
+        if (cartItem == null)
+        {
+            cartItem = new CartItem(product);
+        }
+        int oldCount = cartItem.Count;
+        cartItem.setCount(oldCount + 1);
+        CartMap.put(productId, cartItem);
+        updateTotalCost();
     }
 
     private void updateTotalCost()
