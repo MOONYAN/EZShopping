@@ -1,15 +1,17 @@
 package tw.edu.ntut.ezshopping;
 
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.IgnoreExtraProperties;
 
 /**
  * Created by Owen on 07/29/2016.
  */
+@IgnoreExtraProperties
 public class User
 {
-    public String displayName;
-    public String email;
-    public String uid;
+    public String DisplayName;
+    public String Email;
+    public String Uid;
 
     public User()
     {
@@ -18,8 +20,8 @@ public class User
 
     public User(FirebaseUser user)
     {
-        this.displayName = user.getDisplayName();
-        this.email = user.getEmail();
-        this.uid = user.getUid();
+        DisplayName = user.getDisplayName();
+        Email = user.getEmail();
+        Uid = user.getUid();
     }
 }

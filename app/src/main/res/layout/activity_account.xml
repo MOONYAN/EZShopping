@@ -12,7 +12,7 @@
     tools:context="tw.edu.ntut.ezshopping.AccountActivity">
 
     <TextView
-        android:id="@+id/gmail"
+        android:id="@+id/gmail_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16sp"
@@ -20,7 +20,7 @@
         android:textAppearance="?android:attr/textAppearance"/>
 
     <TextView
-        android:id="@+id/uid"
+        android:id="@+id/uid_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16sp"
@@ -28,7 +28,7 @@
         tools:text="Uid: 123456789abc"/>
 
     <TextView
-        android:id="@+id/display_name"
+        android:id="@+id/display_name_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16sp"

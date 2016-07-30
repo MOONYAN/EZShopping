@@ -2,9 +2,8 @@ package tw.edu.ntut.ezshopping;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -27,7 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class AccountActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener
+public class AccountActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener
 {
     private static final String TAG = "AccountActivity";
     private static final int RC_SIGN_IN = 9001;
@@ -90,9 +89,9 @@ public class AccountActivity extends AppCompatActivity implements GoogleApiClien
 
     private void processViews()
     {
-        _gmailTextView = (TextView) findViewById(R.id.gmail);
-        _uidTextView = (TextView) findViewById(R.id.uid);
-        _displayNameTextView = (TextView) findViewById(R.id.display_name);
+        _gmailTextView = (TextView) findViewById(R.id.gmail_text);
+        _uidTextView = (TextView) findViewById(R.id.uid_text);
+        _displayNameTextView = (TextView) findViewById(R.id.display_name_text);
     }
 
     private void processControllers()
@@ -166,7 +165,9 @@ public class AccountActivity extends AppCompatActivity implements GoogleApiClien
     private void firebaseAuthWithGoogle(GoogleSignInAccount account)
     {
         Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
-
+        // [START_EXCLUDE silent]
+        showProgressDialog();
+        // [END_EXCLUDE]
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         _firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
@@ -185,7 +186,9 @@ public class AccountActivity extends AppCompatActivity implements GoogleApiClien
                             Toast.makeText(AccountActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
-                        // ...
+                        // [START_EXCLUDE]
+                        hideProgressDialog();
+                        // [END_EXCLUDE]
                     }
                 });
     }
@@ -219,18 +222,19 @@ public class AccountActivity extends AppCompatActivity implements GoogleApiClien
 
     private void updateUI(FirebaseUser user)
     {
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preferenceName),MODE_PRIVATE);
+        hideProgressDialog();
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preferenceName), MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         if (user != null)
         {
-            editor.putString("FirebaseId",user.getUid());
+            editor.putString("FirebaseId", user.getUid());
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             database.getReference("user").child(user.getUid()).setValue(new User(user));
 
             _gmailTextView.setText(getString(R.string.gmail_format_string, user.getEmail()));
             _uidTextView.setText(getString(R.string.uid_format_string, user.getUid()));
-            _displayNameTextView.setText(getString(R.string.displayName_format_string,user.getDisplayName()));
+            _displayNameTextView.setText(getString(R.string.displayName_format_string, user.getDisplayName()));
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_layout).setVisibility(View.VISIBLE);
         }

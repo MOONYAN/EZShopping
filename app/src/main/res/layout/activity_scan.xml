@@ -12,35 +12,105 @@
     tools:context="tw.edu.ntut.ezshopping.ScanActivity">
 
     <TextView
-        android:id="@+id/scan_content"
+        android:id="@+id/scan_content_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_margin="@dimen/default_margin"
         android:hint="SCAN CONTENT"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
-        android:id="@+id/scan_format"
+        android:id="@+id/scan_format_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_margin="@dimen/default_margin"
         android:hint="SCAN FORMAT"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_vertical_margin"
-        android:text="Scan"
-        android:onClick="runOnClick"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:orientation="horizontal">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_vertical_margin"
-        android:text="Back"
-        android:onClick="backOnClick"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:onClick="runOnClick"
+            android:text="Scan"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:onClick="backOnClick"
+            android:text="Back"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+    </LinearLayout>
+
+
+    <TableLayout
+        android:id="@+id/result_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:text="Name"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <TextView
+                android:id="@+id/name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:hint="Name"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:text="UnitPrice"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <TextView
+                android:id="@+id/unit_price_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:hint="UnitPrice"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:text="ImageURL"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <TextView
+                android:id="@+id/image_URL_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:hint="ImageURL"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>
