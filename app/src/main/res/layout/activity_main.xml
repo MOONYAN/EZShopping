@@ -11,6 +11,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="tw.edu.ntut.ezshopping.MainActivity">
 
+    <ImageButton
+        android:id="@+id/account_image_button"
+        android:layout_margin="8sp"
+        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ez_account"
+        android:layout_gravity="center_horizontal"
+        android:onClick="accountOnClick"/>
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +32,7 @@
 
             <ImageButton
                 android:id="@+id/scan_image_button"
-                android:layout_margin="8sp"
+                android:layout_margin="16sp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
@@ -30,7 +42,7 @@
 
             <ImageButton
                 android:id="@+id/cart_image_button"
-                android:layout_margin="8sp"
+                android:layout_margin="16sp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
@@ -43,7 +55,7 @@
 
             <ImageButton
                 android:id="@+id/log_image_button"
-                android:layout_margin="8sp"
+                android:layout_margin="16sp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
@@ -53,7 +65,7 @@
 
             <ImageButton
                 android:id="@+id/checkout_image_button"
-                android:layout_margin="8sp"
+                android:layout_margin="16sp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
