@@ -2,7 +2,6 @@ package tw.edu.ntut.ezshopping;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.TableLayout;
@@ -25,6 +24,7 @@ public class ScanActivity extends BaseActivity
     private TextView _imageURLText;
     private TextView _nameText;
     private TextView _unitPriceText;
+    private Product _product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -70,24 +70,25 @@ public class ScanActivity extends BaseActivity
             _scanFormatText.setText(scanFormat);
             Log.d("----------", "onActivityResult: has something");
             Toast.makeText(this, "test" + scanContent, Toast.LENGTH_SHORT).show();
-            final String itemId = scanContent;
-            FirebaseDatabase.getInstance().getReference("item/" + itemId).addListenerForSingleValueEvent(new ValueEventListener()
+            final String productId = scanContent;
+            FirebaseDatabase.getInstance().getReference("product/" + productId).addListenerForSingleValueEvent(new ValueEventListener()
             {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot)
                 {
-                    Item item = dataSnapshot.getValue(Item.class);
-                    updateUI(item);
-                    Log.d(TAG, "onDataChange: " + item.Name);
-                    Log.d(TAG, "onDataChange: " + item.ImageURL);
-                    Log.d(TAG, "onDataChange: " + item.UnitPrice);
+                    _product = dataSnapshot.getValue(Product.class);
+                    Log.d(TAG, "onDataChange: " + _product.Name);
+                    Log.d(TAG, "onDataChange: " + _product.ImageURL);
+                    Log.d(TAG, "onDataChange: " + _product.UnitPrice);
+                    updateUI();
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError)
                 {
-                    Log.w(TAG, "getItem:onCancelled", databaseError.toException());
-                    updateUI(null);
+                    Log.w(TAG, "getProduct:onCancelled", databaseError.toException());
+                    _product = null;
+                    updateUI();
                 }
             });
         }
@@ -103,10 +104,10 @@ public class ScanActivity extends BaseActivity
         finish();
     }
 
-    private void updateUI(@Nullable Item item)
+    private void updateUI()
     {
         hideProgressDialog();
-        if (item == null)
+        if (_product == null)
         {
             _resulLayout.setVisibility(View.GONE);
             _imageURLText.setText(null);
@@ -116,9 +117,14 @@ public class ScanActivity extends BaseActivity
         else
         {
             _resulLayout.setVisibility(View.VISIBLE);
-            _imageURLText.setText(item.ImageURL);
-            _nameText.setText(item.Name);
-            _unitPriceText.setText(item.UnitPrice+"");
+            _imageURLText.setText(_product.ImageURL);
+            _nameText.setText(_product.Name);
+            _unitPriceText.setText(_product.UnitPrice+"");
         }
+    }
+
+    public void addOnClick(View view)
+    {
+        
     }
 }

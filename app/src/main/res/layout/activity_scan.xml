@@ -49,68 +49,84 @@
             android:textAppearance="?android:attr/textAppearanceLarge"/>
     </LinearLayout>
 
-
-    <TableLayout
-        android:id="@+id/result_layout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:stretchColumns="1"
-        android:visibility="gone"
-        tools:visibility="visible">
+        android:layout_height="wrap_content">
 
-        <TableRow>
+        <TableLayout
+            android:id="@+id/result_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:stretchColumns="1"
+            android:visibility="gone"
+            tools:visibility="visible">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:text="Name"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+            <TableRow>
 
-            <TextView
-                android:id="@+id/name_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:hint="Name"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
-        </TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:text="Name"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-        <TableRow>
+                <TextView
+                    android:id="@+id/name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:hint="Name"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+            </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:text="UnitPrice"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+            <TableRow>
 
-            <TextView
-                android:id="@+id/unit_price_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:hint="UnitPrice"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
-        </TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:text="UnitPrice"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-        <TableRow>
+                <TextView
+                    android:id="@+id/unit_price_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:hint="UnitPrice"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+            </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:text="ImageURL"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+            <TableRow>
 
-            <TextView
-                android:id="@+id/image_URL_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:hint="ImageURL"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
-        </TableRow>
-    </TableLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:text="ImageURL"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+                <TextView
+                    android:id="@+id/image_URL_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:hint="ImageURL"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:onClick="addOnClick"
+                    android:text="Add To Cart"
+                    />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
 
 </LinearLayout>
