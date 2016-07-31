@@ -130,7 +130,8 @@ public class ScanActivity extends BaseActivity
     public void addOnClick(View view)
     {
         Cart cart = Model.getInstance().getCart();
-        cart.addToCart(_productId, _product);
+//        cart.addToCart(_productId, _product);
+        cart.addToCart(new CartItem(_productId,_product));
         Toast.makeText(this,"complete",Toast.LENGTH_SHORT);
         setDefaultState();
     }

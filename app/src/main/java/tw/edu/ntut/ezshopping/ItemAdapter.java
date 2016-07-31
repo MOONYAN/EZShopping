@@ -31,7 +31,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(ItemAdapter.ViewHolder holder, int position)
+    public void onBindViewHolder(ItemAdapter.ViewHolder holder, final int position)
     {
         CartItem item = _itemList.get(position);
         holder._nameText.setText(item.Name);
@@ -48,10 +48,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>
     {
         public TextView _nameText;
         public TextView _countText;
+        public View _rootView;
 
         public ViewHolder(View itemView)
         {
             super(itemView);
+            _rootView = itemView;
             _nameText = (TextView) itemView.findViewById(R.id.name_text);
             _countText = (TextView) itemView.findViewById(R.id.count_text);
         }

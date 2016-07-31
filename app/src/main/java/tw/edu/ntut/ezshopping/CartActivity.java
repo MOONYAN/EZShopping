@@ -5,9 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class CartActivity extends AppCompatActivity
 {
@@ -30,8 +28,7 @@ public class CartActivity extends AppCompatActivity
 
     private void initializeRecyclerView()
     {
-        Map map = Model.getInstance().getCart().CartMap;
-        List list = new ArrayList(map.values());
+        List list =  Model.getInstance().getCart().ItemList;
         ItemAdapter adapter = new ItemAdapter(list);
         _recyclerView.setAdapter(adapter);
         _recyclerView.setLayoutManager(new LinearLayoutManager(this));
