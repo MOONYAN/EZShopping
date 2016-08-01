@@ -27,6 +27,12 @@ public class Cart
         updateTotalCost();
     }
 
+    public void removeCartItem(int position)
+    {
+        ItemList.remove(position);
+        updateTotalCost();
+    }
+
     public void addToCart(CartItem newItem)
     {
         for (CartItem cartItem : ItemList)

@@ -3,11 +3,13 @@ package tw.edu.ntut.ezshopping;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 public class ItemActivity extends AppCompatActivity
 {
+    private static final String TAG = "ItemActivity";
     private TextView _productIdText;
     private TextView _nameText;
     private TextView _unitPriceText;
@@ -25,6 +27,7 @@ public class ItemActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
 
+        Log.d(TAG, "onCreate: ");
         processViews();
         initializeItem();
         updateUI();
@@ -57,7 +60,7 @@ public class ItemActivity extends AppCompatActivity
         _countText.setText(_item.Count + "");
         _subtotalText.setText(_item.Subtotal + "");
         _imageURLText.setText(_item.ImageURL);
-        _minusButton.setEnabled(_item.Count > 0);
+        _minusButton.setEnabled(_item.Count > 1);
     }
 
     public void minusOnClick(View view)
@@ -70,5 +73,23 @@ public class ItemActivity extends AppCompatActivity
     {
         _item.addCount(1);
         updateUI();
+    }
+
+    public void setOnClick(View view)
+    {
+        Log.d(TAG, "setOnClick: ");
+        Intent intent = getIntent();
+        intent.putExtra("item",_item);
+        setResult(RESULT_OK,intent);
+        finish();
+    }
+
+    public void deleteOnClick(View view)
+    {
+        Log.d(TAG, "deleteOnClick: ");
+        Intent intent = getIntent();
+        intent.removeExtra("item");
+        setResult(RESULT_OK,intent);
+        finish();
     }
 }

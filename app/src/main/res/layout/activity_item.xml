@@ -159,22 +159,25 @@
         <TableRow>
 
             <ImageButton
+                android:id="@+id/set_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/default_margin"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:src="@android:drawable/ic_menu_revert"
-                />
+                android:onClick="setOnClick"
+                android:src="@android:drawable/ic_menu_manage"/>
 
             <ImageButton
+                android:id="@+id/delete_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/default_margin"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
+                android:onClick="deleteOnClick"
                 android:src="@android:drawable/ic_menu_delete"
                 />
         </TableRow>

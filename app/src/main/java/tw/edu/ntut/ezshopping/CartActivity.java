@@ -15,12 +15,16 @@ public class CartActivity extends AppCompatActivity
 {
     private static final String TAG = "CartActivity";
     private RecyclerView _recyclerView;
+    private Cart _cart;
+    private ItemAdapter _adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+
+        _cart = Model.getInstance().getCart();
 
         processViews();
         initializeRecyclerView();
@@ -33,8 +37,8 @@ public class CartActivity extends AppCompatActivity
 
     private void initializeRecyclerView()
     {
-        List list =  Model.getInstance().getCart().ItemList;
-        ItemAdapter adapter = new ItemAdapter(list)
+        List list = _cart.ItemList;
+        _adapter = new ItemAdapter(list)
         {
             @Override
             public void onBindViewHolder(ViewHolder holder, final int position)
@@ -56,7 +60,32 @@ public class CartActivity extends AppCompatActivity
                 });
             }
         };
-        _recyclerView.setAdapter(adapter);
+        _recyclerView.setAdapter(_adapter);
         _recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(TAG, "onActivityResult: ");
+        if (resultCode == RESULT_OK)
+        {
+            int position = data.getIntExtra("position",-1);
+            CartItem cartItem = (CartItem) data.getExtras().getSerializable("item");
+            if (cartItem == null)
+            {
+                Log.d(TAG, "onActivityResult: null");
+                _cart.removeCartItem(position);
+                _adapter.notifyItemRemoved(position);
+                _adapter.notifyItemRangeChanged(0,_cart.ItemList.size());
+            }
+            else
+            {
+                Log.d(TAG, "onActivityResult: nonNull");
+                _cart.setCartItem(position,cartItem);
+                _adapter.notifyItemChanged(position,cartItem);
+            }
+        }
     }
 }
