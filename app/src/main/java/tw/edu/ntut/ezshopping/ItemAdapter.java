@@ -46,9 +46,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        public TextView _nameText;
-        public TextView _countText;
-        public View _rootView;
+        private TextView _nameText;
+        private TextView _countText;
+        private View _rootView;
 
         public ViewHolder(View itemView)
         {
@@ -56,6 +56,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>
             _rootView = itemView;
             _nameText = (TextView) itemView.findViewById(R.id.name_text);
             _countText = (TextView) itemView.findViewById(R.id.count_text);
+        }
+
+        public View getRootView()
+        {
+            return _rootView;
         }
     }
 }

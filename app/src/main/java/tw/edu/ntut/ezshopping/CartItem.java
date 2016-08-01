@@ -6,7 +6,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
  * Created by Owen on 07/30/2016.
  */
 @IgnoreExtraProperties
-public class CartItem
+public class CartItem implements java.io.Serializable
 {
     public String ProductId;
     public String ImageURL;

@@ -32,7 +32,7 @@
 
             <ImageButton
                 android:id="@+id/scan_image_button"
-                android:layout_margin="16sp"
+                android:layout_margin="@dimen/default_margin"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
@@ -42,7 +42,7 @@
 
             <ImageButton
                 android:id="@+id/cart_image_button"
-                android:layout_margin="16sp"
+                android:layout_margin="@dimen/default_margin"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
@@ -55,7 +55,7 @@
 
             <ImageButton
                 android:id="@+id/log_image_button"
-                android:layout_margin="16sp"
+                android:layout_margin="@dimen/default_margin"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
@@ -65,7 +65,7 @@
 
             <ImageButton
                 android:id="@+id/checkout_image_button"
-                android:layout_margin="16sp"
+                android:layout_margin="@dimen/default_margin"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
