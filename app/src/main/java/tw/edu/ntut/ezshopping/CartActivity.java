@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class CartActivity extends AppCompatActivity
 {
     private static final String TAG = "CartActivity";
     private RecyclerView _recyclerView;
+    private TextView _totalText;
     private Cart _cart;
     private ItemAdapter _adapter;
 
@@ -28,11 +30,13 @@ public class CartActivity extends AppCompatActivity
 
         processViews();
         initializeRecyclerView();
+        updateUI();
     }
 
     private void processViews()
     {
         _recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        _totalText = (TextView) findViewById(R.id.total_text);
     }
 
     private void initializeRecyclerView()
@@ -86,6 +90,12 @@ public class CartActivity extends AppCompatActivity
                 _cart.setCartItem(position,cartItem);
                 _adapter.notifyItemChanged(position,cartItem);
             }
+            updateUI();
         }
+    }
+
+    private void updateUI()
+    {
+        _totalText.setText(_cart.TotalCost+"");
     }
 }

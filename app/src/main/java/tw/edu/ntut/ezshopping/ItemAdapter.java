@@ -36,6 +36,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>
         CartItem item = _itemList.get(position);
         holder._nameText.setText(item.Name);
         holder._countText.setText(item.Count+"");
+        holder._subtotalText.setText(item.Subtotal+"");
     }
 
     @Override
@@ -48,6 +49,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>
     {
         private TextView _nameText;
         private TextView _countText;
+        private TextView _subtotalText;
         private View _rootView;
 
         public ViewHolder(View itemView)
@@ -56,6 +58,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>
             _rootView = itemView;
             _nameText = (TextView) itemView.findViewById(R.id.name_text);
             _countText = (TextView) itemView.findViewById(R.id.count_text);
+            _subtotalText = (TextView) itemView.findViewById(R.id.subtotal_text);
         }
 
         public View getRootView()
