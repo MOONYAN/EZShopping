@@ -6,10 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import tw.edu.ntut.ezshopping.FireField.FireRecord;
+import tw.edu.ntut.ezshopping.ModelField.FireFactory;
 import tw.edu.ntut.ezshopping.ModelField.Model;
+import tw.edu.ntut.ezshopping.ModelField.Record;
 
 public class CheckoutActivity extends BaseActivity
 {
@@ -58,9 +62,22 @@ public class CheckoutActivity extends BaseActivity
 
     public void uploadOnClick(View view)
     {
-//        showProgressDialog();
+        showProgressDialog();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("record").push();
         Log.d(TAG, "uploadOnClick: " + reference.getKey());
+
+        Record record = new Record(_uid, _model.getCart());
+        FireRecord fireRecord = FireFactory.ParseFireRecord(record);
+        reference.setValue(fireRecord, new DatabaseReference.CompletionListener()
+        {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference)
+            {
+                hideProgressDialog();
+                _model.setNewCart();
+                finish();
+            }
+        });
 
 //        CartItem cartItem = new CartItem();
 //        cartItem.ProductId = "TestProductId";
@@ -87,7 +104,6 @@ public class CheckoutActivity extends BaseActivity
 //        });
 
 //        hideProgressDialog();
-
 
 
 //        reference.runTransaction(new Transaction.Handler()

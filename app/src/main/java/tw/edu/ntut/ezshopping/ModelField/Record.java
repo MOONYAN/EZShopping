@@ -11,20 +11,35 @@ import java.util.Date;
 @IgnoreExtraProperties
 public class Record
 {
-    public String Uid;
-    public String TransactionTime;
-    public Cart Cart;
+    private String _uid;
+    private String _transactionTime;
+    private Cart _cart;
 
     public Record()
     {
 
     }
 
-    public Record(String uid,Cart cart)
+    public Record(String uid, Cart cart)
     {
-        Uid = uid;
-        Cart = cart;
+        _uid = uid;
+        _cart = cart;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        TransactionTime = dateFormat.format(new Date(System.currentTimeMillis()));
+        _transactionTime = dateFormat.format(new Date(System.currentTimeMillis()));
+    }
+
+    public Cart getCart()
+    {
+        return _cart;
+    }
+
+    public String getTransactionTime()
+    {
+        return _transactionTime;
+    }
+
+    public String getUid()
+    {
+        return _uid;
     }
 }

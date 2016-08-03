@@ -28,15 +28,15 @@ public class CartItem implements java.io.Serializable
         _subtotal = _count * _fireProduct.UnitPrice;
     }
 
+    public int getCount()
+    {
+        return _count;
+    }
+
     public void setCount(int count)
     {
         _count = count;
         _subtotal = _count * _fireProduct.UnitPrice;
-    }
-
-    public int getCount()
-    {
-        return _count;
     }
 
     public String getProductId()
