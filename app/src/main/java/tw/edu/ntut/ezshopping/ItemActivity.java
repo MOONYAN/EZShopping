@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import tw.edu.ntut.ezshopping.ModelField.CartItem;
+
 public class ItemActivity extends AppCompatActivity
 {
     private static final String TAG = "ItemActivity";
@@ -54,13 +56,13 @@ public class ItemActivity extends AppCompatActivity
 
     private void updateUI()
     {
-        _productIdText.setText(_item.ProductId);
-        _nameText.setText(_item.Name);
-        _unitPriceText.setText(_item.UnitPrice + "");
-        _countText.setText(_item.Count + "");
-        _subtotalText.setText(_item.Subtotal + "");
-        _imageURLText.setText(_item.ImageURL);
-        _minusButton.setEnabled(_item.Count > 1);
+        _productIdText.setText(_item.getProductId());
+        _nameText.setText(_item.getName());
+        _unitPriceText.setText(_item.getUnitPrice() + "");
+        _countText.setText(_item.getCount() + "");
+        _subtotalText.setText(_item.getSubtotal() + "");
+        _imageURLText.setText(_item.getImageURL());
+        _minusButton.setEnabled(_item.getCount() > 1);
     }
 
     public void minusOnClick(View view)

@@ -12,6 +12,10 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import tw.edu.ntut.ezshopping.ModelField.Cart;
+import tw.edu.ntut.ezshopping.ModelField.CartItem;
+import tw.edu.ntut.ezshopping.ModelField.Model;
+
 public class CartActivity extends AppCompatActivity
 {
     private static final String TAG = "CartActivity";
@@ -41,7 +45,7 @@ public class CartActivity extends AppCompatActivity
 
     private void initializeRecyclerView()
     {
-        List list = _cart.ItemList;
+        final List<CartItem> list = _cart.getItemList();
         _adapter = new ItemAdapter(list)
         {
             @Override
@@ -55,7 +59,7 @@ public class CartActivity extends AppCompatActivity
                     {
                         Toast.makeText(CartActivity.this,position+"GG",Toast.LENGTH_SHORT);
                         Log.d(TAG, "onClick: " + position);
-                        CartItem cartItem = Model.getInstance().getCart().ItemList.get(position);
+                        CartItem cartItem = list.get(position);
                         Intent intent = new Intent(CartActivity.this,ItemActivity.class);
                         intent.putExtra("position",position);
                         intent.putExtra("item",cartItem);
@@ -82,7 +86,7 @@ public class CartActivity extends AppCompatActivity
                 Log.d(TAG, "onActivityResult: null");
                 _cart.removeCartItem(position);
                 _adapter.notifyItemRemoved(position);
-                _adapter.notifyItemRangeChanged(0,_cart.ItemList.size());
+                _adapter.notifyItemRangeChanged(0,_cart.getItemList().size());
             }
             else
             {
@@ -96,6 +100,6 @@ public class CartActivity extends AppCompatActivity
 
     private void updateUI()
     {
-        _totalText.setText(_cart.TotalCost+"");
+        _totalText.setText(_cart.getTotalCost() +"");
     }
 }

@@ -26,6 +26,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 
+import tw.edu.ntut.ezshopping.ModelField.User;
+
 public class AccountActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener
 {
     private static final String TAG = "AccountActivity";

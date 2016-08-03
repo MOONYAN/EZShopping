@@ -15,6 +15,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import tw.edu.ntut.ezshopping.FireField.FireProduct;
+import tw.edu.ntut.ezshopping.ModelField.Cart;
+import tw.edu.ntut.ezshopping.ModelField.CartItem;
+import tw.edu.ntut.ezshopping.ModelField.Model;
+
 public class ScanActivity extends BaseActivity
 {
     private static final String TAG = "ScanActivity";
@@ -24,7 +29,7 @@ public class ScanActivity extends BaseActivity
     private TextView _imageURLText;
     private TextView _nameText;
     private TextView _unitPriceText;
-    private Product _product;
+    private FireProduct _fireProduct;
     private String _productId;
 
     @Override
@@ -77,10 +82,10 @@ public class ScanActivity extends BaseActivity
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot)
                 {
-                    _product = dataSnapshot.getValue(Product.class);
-                    Log.d(TAG, "onDataChange: " + _product.Name);
-                    Log.d(TAG, "onDataChange: " + _product.ImageURL);
-                    Log.d(TAG, "onDataChange: " + _product.UnitPrice);
+                    _fireProduct = dataSnapshot.getValue(FireProduct.class);
+                    Log.d(TAG, "onDataChange: " + _fireProduct.Name);
+                    Log.d(TAG, "onDataChange: " + _fireProduct.ImageURL);
+                    Log.d(TAG, "onDataChange: " + _fireProduct.UnitPrice);
                     updateUI();
                 }
 
@@ -88,7 +93,7 @@ public class ScanActivity extends BaseActivity
                 public void onCancelled(DatabaseError databaseError)
                 {
                     Log.w(TAG, "getProduct:onCancelled", databaseError.toException());
-                    _product = null;
+                    _fireProduct = null;
                     setDefaultState();
                 }
             });
@@ -109,9 +114,9 @@ public class ScanActivity extends BaseActivity
     {
         hideProgressDialog();
         _resulLayout.setVisibility(View.VISIBLE);
-        _imageURLText.setText(_product.ImageURL);
-        _nameText.setText(_product.Name);
-        _unitPriceText.setText(_product.UnitPrice + "");
+        _imageURLText.setText(_fireProduct.ImageURL);
+        _nameText.setText(_fireProduct.Name);
+        _unitPriceText.setText(_fireProduct.UnitPrice + "");
     }
 
     private void setDefaultState()
@@ -120,7 +125,7 @@ public class ScanActivity extends BaseActivity
         _scanFormatText.setText(null);
         _scanContentText.setText(null);
         _productId = null;
-        _product = null;
+        _fireProduct = null;
         _resulLayout.setVisibility(View.GONE);
         _imageURLText.setText(null);
         _nameText.setText(null);
@@ -130,8 +135,8 @@ public class ScanActivity extends BaseActivity
     public void addOnClick(View view)
     {
         Cart cart = Model.getInstance().getCart();
-//        cart.addToCart(_productId, _product);
-        cart.addToCart(new CartItem(_productId,_product));
+//        cart.addToCart(_productId, _fireProduct);
+        cart.addToCart(new CartItem(_productId, _fireProduct));
         Toast.makeText(this,"complete",Toast.LENGTH_SHORT);
         setDefaultState();
     }

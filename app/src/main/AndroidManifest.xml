@@ -23,6 +23,8 @@
         </activity>
         <activity android:name=".ItemActivity">
         </activity>
+        <activity android:name=".CheckoutActivity">
+        </activity>
     </application>
 
 </manifest>

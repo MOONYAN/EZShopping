@@ -1,4 +1,4 @@
-package tw.edu.ntut.ezshopping;
+package tw.edu.ntut.ezshopping.ModelField;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.IgnoreExtraProperties;

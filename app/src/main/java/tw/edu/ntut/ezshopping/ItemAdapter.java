@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import tw.edu.ntut.ezshopping.ModelField.CartItem;
+
 /**
  * Created by Owen on 07/30/2016.
  */
@@ -34,9 +36,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>
     public void onBindViewHolder(ItemAdapter.ViewHolder holder, final int position)
     {
         CartItem item = _itemList.get(position);
-        holder._nameText.setText(item.Name);
-        holder._countText.setText(item.Count+"");
-        holder._subtotalText.setText(item.Subtotal+"");
+        holder._nameText.setText(item.getName());
+        holder._countText.setText(item.getCount()+"");
+        holder._subtotalText.setText(item.getSubtotal()+"");
     }
 
     @Override
