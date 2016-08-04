@@ -60,7 +60,7 @@ public class CheckoutActivity extends BaseActivity
 
     private void updateUI()
     {
-        _totalText.setText(_cart.getTotalCost() +"");
+        _totalText.setText(_cart.getTotal() +"");
     }
 
     private void processViews()

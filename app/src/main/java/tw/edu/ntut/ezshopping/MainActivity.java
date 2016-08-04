@@ -73,7 +73,8 @@ public class MainActivity extends AppCompatActivity
 
     public void logOnClick(View view)
     {
-
+        Intent intent = new Intent(this, LogActivity.class);
+        startActivity(intent);
     }
 
     public void checkoutOnClick(View view)

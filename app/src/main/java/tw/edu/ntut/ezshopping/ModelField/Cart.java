@@ -1,34 +1,20 @@
 package tw.edu.ntut.ezshopping.ModelField;
 
-import com.google.firebase.database.IgnoreExtraProperties;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Owen on 07/30/2016.
  */
-@IgnoreExtraProperties
-
-public class Cart
+public class Cart implements java.io.Serializable
 {
     private List<CartItem> _itemList;
 
-    private int _totalCost = 0;
+    private int _total = 0;
 
     public Cart()
     {
         _itemList = new ArrayList<>();
-    }
-
-    public List<CartItem> getItemList()
-    {
-        return _itemList;
-    }
-
-    public int getTotalCost()
-    {
-        return _totalCost;
     }
 
     public void setCartItem(int position, CartItem cartItem)
@@ -60,10 +46,30 @@ public class Cart
 
     private void updateTotalCost()
     {
-        _totalCost = 0;
+        _total = 0;
         for (CartItem cartItem : _itemList)
         {
-            _totalCost += cartItem.getUnitPrice() * cartItem.getCount();
+            _total += cartItem.getUnitPrice() * cartItem.getCount();
         }
+    }
+
+    public List<CartItem> getItemList()
+    {
+        return _itemList;
+    }
+
+    public void setItemList(List<CartItem> itemList)
+    {
+        _itemList = itemList;
+    }
+
+    public int getTotal()
+    {
+        return _total;
+    }
+
+    public void setTotal(int total)
+    {
+        _total = total;
     }
 }

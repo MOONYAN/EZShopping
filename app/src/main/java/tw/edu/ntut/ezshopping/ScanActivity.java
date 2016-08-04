@@ -25,7 +25,7 @@ public class ScanActivity extends BaseActivity
     private static final String TAG = "ScanActivity";
     private TextView _scanContentText;
     private TextView _scanFormatText;
-    private TableLayout _resulLayout;
+    private TableLayout _resultLayout;
     private TextView _imageURLText;
     private TextView _nameText;
     private TextView _unitPriceText;
@@ -46,7 +46,7 @@ public class ScanActivity extends BaseActivity
     {
         _scanContentText = (TextView) findViewById(R.id.scan_content_text);
         _scanFormatText = (TextView) findViewById(R.id.scan_format_text);
-        _resulLayout = (TableLayout) findViewById(R.id.result_layout);
+        _resultLayout = (TableLayout) findViewById(R.id.result_layout);
         _imageURLText = (TextView) findViewById(R.id.image_URL_text);
         _nameText = (TextView) findViewById(R.id.name_text);
         _unitPriceText = (TextView) findViewById(R.id.unit_price_text);
@@ -83,10 +83,14 @@ public class ScanActivity extends BaseActivity
                 public void onDataChange(DataSnapshot dataSnapshot)
                 {
                     _fireProduct = dataSnapshot.getValue(FireProduct.class);
-                    Log.d(TAG, "onDataChange: " + _fireProduct.Name);
-                    Log.d(TAG, "onDataChange: " + _fireProduct.ImageURL);
-                    Log.d(TAG, "onDataChange: " + _fireProduct.UnitPrice);
-                    updateUI();
+                    if (_fireProduct == null) setDefaultState();
+                    else
+                    {
+                        Log.d(TAG, "onDataChange: " + _fireProduct.Name);
+                        Log.d(TAG, "onDataChange: " + _fireProduct.ImageURL);
+                        Log.d(TAG, "onDataChange: " + _fireProduct.UnitPrice);
+                        updateUI();
+                    }
                 }
 
                 @Override
@@ -113,7 +117,7 @@ public class ScanActivity extends BaseActivity
     private void updateUI()
     {
         hideProgressDialog();
-        _resulLayout.setVisibility(View.VISIBLE);
+        _resultLayout.setVisibility(View.VISIBLE);
         _imageURLText.setText(_fireProduct.ImageURL);
         _nameText.setText(_fireProduct.Name);
         _unitPriceText.setText(_fireProduct.UnitPrice + "");
@@ -126,7 +130,7 @@ public class ScanActivity extends BaseActivity
         _scanContentText.setText(null);
         _productId = null;
         _fireProduct = null;
-        _resulLayout.setVisibility(View.GONE);
+        _resultLayout.setVisibility(View.GONE);
         _imageURLText.setText(null);
         _nameText.setText(null);
         _unitPriceText.setText(null);
@@ -137,7 +141,7 @@ public class ScanActivity extends BaseActivity
         Cart cart = Model.getInstance().getCart();
 //        cart.addToCart(_productId, _fireProduct);
         cart.addToCart(new CartItem(_productId, _fireProduct));
-        Toast.makeText(this,"complete",Toast.LENGTH_SHORT);
+        Toast.makeText(this, "complete", Toast.LENGTH_SHORT);
         setDefaultState();
     }
 }

@@ -100,6 +100,6 @@ public class CartActivity extends AppCompatActivity
 
     private void updateUI()
     {
-        _totalText.setText(_cart.getTotalCost() +"");
+        _totalText.setText(_cart.getTotal() +"");
     }
 }
