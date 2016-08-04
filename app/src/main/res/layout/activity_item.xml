@@ -28,6 +28,7 @@
 
             <TextView
                 android:id="@+id/product_id_text"
+                android:background="@drawable/retangle_drawable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
@@ -47,6 +48,7 @@
 
             <TextView
                 android:id="@+id/name_text"
+                android:background="@drawable/retangle_drawable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
@@ -68,6 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
+                android:background="@drawable/retangle_drawable"
                 android:hint="UnitPrice"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
         </TableRow>
@@ -99,6 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/default_margin"
                     android:hint="Count"
+                    android:background="@drawable/retangle_drawable"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
 
                 <ImageButton
@@ -130,6 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
                 android:hint="Subtotal"
+                android:background="@drawable/retangle_drawable"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
         </TableRow>
 
@@ -148,6 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
                 android:hint="ImageURL"
+                android:background="@drawable/retangle_drawable"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
         </TableRow>
 

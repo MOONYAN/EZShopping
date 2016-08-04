@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16sp"
+        android:background="@drawable/retangle_drawable"
         android:text="Gmail:1787hz@gmail.com"
         android:textAppearance="?android:attr/textAppearance"/>
 
@@ -24,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16sp"
+        android:background="@drawable/retangle_drawable"
         android:textAppearance="?android:attr/textAppearance"
         tools:text="Uid: 123456789abc"/>
 
@@ -32,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16sp"
+        android:background="@drawable/retangle_drawable"
         android:textAppearance="?android:attr/textAppearance"
         tools:text="DisplayName: 123456789abc"/>
 
@@ -44,10 +47,10 @@
         />
 
     <LinearLayout
+        android:id="@+id/sign_out_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16sp"
-        android:id="@+id/sign_out_layout"
         android:orientation="horizontal">
 
         <Button

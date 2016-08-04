@@ -30,11 +30,24 @@ public class CartActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        _cart = Model.getInstance().getCart();
-
+        initializeCart();
         processViews();
         initializeRecyclerView();
         updateUI();
+    }
+
+    private void initializeCart()
+    {
+        Intent intent = getIntent();
+        String actionName = intent.getAction();
+        if (actionName.equals("ez.ViewCart"))
+        {
+            _cart = (Cart) intent.getSerializableExtra("cart");
+        }
+        else if (actionName.equals("ez.EditCart"))
+        {
+            _cart = Model.getInstance().getCart();
+        }
     }
 
     private void processViews()
@@ -57,13 +70,13 @@ public class CartActivity extends AppCompatActivity
                     @Override
                     public void onClick(View view)
                     {
-                        Toast.makeText(CartActivity.this,position+"GG",Toast.LENGTH_SHORT);
+                        Toast.makeText(CartActivity.this, position + "GG", Toast.LENGTH_SHORT);
                         Log.d(TAG, "onClick: " + position);
                         CartItem cartItem = list.get(position);
-                        Intent intent = new Intent(CartActivity.this,ItemActivity.class);
-                        intent.putExtra("position",position);
-                        intent.putExtra("item",cartItem);
-                        startActivityForResult(intent,1);
+                        Intent intent = new Intent(CartActivity.this, ItemActivity.class);
+                        intent.putExtra("position", position);
+                        intent.putExtra("item", cartItem);
+                        startActivityForResult(intent, 1);
                     }
                 });
             }
@@ -79,20 +92,20 @@ public class CartActivity extends AppCompatActivity
         Log.d(TAG, "onActivityResult: ");
         if (resultCode == RESULT_OK)
         {
-            int position = data.getIntExtra("position",-1);
+            int position = data.getIntExtra("position", -1);
             CartItem cartItem = (CartItem) data.getExtras().getSerializable("item");
             if (cartItem == null)
             {
                 Log.d(TAG, "onActivityResult: null");
                 _cart.removeCartItem(position);
                 _adapter.notifyItemRemoved(position);
-                _adapter.notifyItemRangeChanged(0,_cart.getItemList().size());
+                _adapter.notifyItemRangeChanged(0, _cart.getItemList().size());
             }
             else
             {
                 Log.d(TAG, "onActivityResult: nonNull");
-                _cart.setCartItem(position,cartItem);
-                _adapter.notifyItemChanged(position,cartItem);
+                _cart.setCartItem(position, cartItem);
+                _adapter.notifyItemChanged(position, cartItem);
             }
             updateUI();
         }
@@ -100,6 +113,6 @@ public class CartActivity extends AppCompatActivity
 
     private void updateUI()
     {
-        _totalText.setText(_cart.getTotal() +"");
+        _totalText.setText(_cart.getTotal() + "");
     }
 }

@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
 
     public void cartOnClick(View view)
     {
-        Intent intent = new Intent(this, CartActivity.class);
+        Intent intent = new Intent("ez.EditCart");
         startActivity(intent);
     }
 

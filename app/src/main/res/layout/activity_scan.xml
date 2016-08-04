@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
         android:hint="SCAN CONTENT"
+        android:background="@drawable/retangle_drawable"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
         android:hint="SCAN FORMAT"
+        android:background="@drawable/retangle_drawable"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <LinearLayout
@@ -76,6 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/default_margin"
                     android:hint="Name"
+                    android:background="@drawable/retangle_drawable"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
             </TableRow>
 
@@ -94,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/default_margin"
                     android:hint="UnitPrice"
+                    android:background="@drawable/retangle_drawable"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
             </TableRow>
 
@@ -112,6 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/default_margin"
                     android:hint="ImageURL"
+                    android:background="@drawable/retangle_drawable"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
             </TableRow>
 

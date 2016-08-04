@@ -20,6 +20,12 @@
         <activity android:name=".AccountActivity">
         </activity>
         <activity android:name=".CartActivity">
+            <intent-filter>
+                <action android:name="ez.EditCart"/>
+                <action android:name="ez.ViewCart"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
         <activity android:name=".ItemActivity">
         </activity>

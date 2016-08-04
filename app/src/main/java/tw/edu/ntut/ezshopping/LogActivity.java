@@ -46,8 +46,6 @@ public class LogActivity extends BaseActivity
             public void onDataChange(DataSnapshot dataSnapshot)
             {
                 GenericTypeIndicator<HashMap<String, FireRecord>> genericTypeIndicator = new GenericTypeIndicator<HashMap<String, FireRecord>>() {};
-//                Map<String, FireRecord> map = dataSnapshot.getValue(genericTypeIndicator );
-
                 HashMap<String, FireRecord> fireRecordMap = dataSnapshot.getValue(genericTypeIndicator);
                 _recordList = FireFactory.ParseRecordList(fireRecordMap);
                 Log.d(TAG, "onDataChange: end");
@@ -84,7 +82,7 @@ public class LogActivity extends BaseActivity
                         Toast.makeText(LogActivity.this, position + "GG", Toast.LENGTH_SHORT);
                         Log.d(TAG, "onClick: " + position);
                         Record record = _recordList.get(position);
-                        Intent intent = new Intent(LogActivity.this, ItemActivity.class);
+                        Intent intent = new Intent("ez.ViewCart");
                         intent.putExtra("cart", record.getCart());
                         startActivity(intent);
                     }
