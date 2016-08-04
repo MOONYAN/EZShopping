@@ -2,6 +2,7 @@ package tw.edu.ntut.ezshopping;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TableLayout;
@@ -37,6 +38,9 @@ public class ScanActivity extends BaseActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         processViews();
         processControllers();
@@ -107,11 +111,6 @@ public class ScanActivity extends BaseActivity
             Toast.makeText(this, "nothing", Toast.LENGTH_SHORT).show();
             Log.d("----------", "onActivityResult: has nothing");
         }
-    }
-
-    public void backOnClick(View view)
-    {
-        finish();
     }
 
     private void updateUI()

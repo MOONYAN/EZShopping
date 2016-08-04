@@ -11,15 +11,20 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ScanActivity">
+        <activity
+            android:name=".ScanActivity"
+            android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".AccountActivity">
+        <activity
+            android:name=".AccountActivity"
+            android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".CartActivity">
+        <activity
+            android:name=".CartActivity"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="ez.EditCart"/>
                 <action android:name="ez.ViewCart"/>
@@ -27,11 +32,17 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ItemActivity">
+        <activity
+            android:name=".ItemActivity"
+            android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".CheckoutActivity">
+        <activity
+            android:name=".CheckoutActivity"
+            android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".LogActivity">
+        <activity
+            android:name=".LogActivity"
+            android:parentActivityName=".MainActivity">
         </activity>
     </application>
 

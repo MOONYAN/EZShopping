@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -44,6 +45,9 @@ public class AccountActivity extends BaseActivity implements GoogleApiClient.OnC
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         processViews();
         processControllers();
@@ -112,14 +116,6 @@ public class AccountActivity extends BaseActivity implements GoogleApiClient.OnC
             public void onClick(View view)
             {
                 signOut();
-            }
-        });
-        findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                finish();
             }
         });
     }

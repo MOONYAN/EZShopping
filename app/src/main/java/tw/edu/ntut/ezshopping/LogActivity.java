@@ -1,7 +1,9 @@
 package tw.edu.ntut.ezshopping;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,6 +28,7 @@ public class LogActivity extends BaseActivity
     private static final String TAG = "CartActivity";
     private RecyclerView _recyclerView;
     private List<Record> _recordList;
+    private String _uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,14 +36,24 @@ public class LogActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         processViews();
+        initializeField();
         initializeRecordList();
+    }
+
+    private void initializeField()
+    {
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preferenceName), MODE_PRIVATE);
+        _uid = sharedPreferences.getString("FirebaseId", null);
     }
 
     private void initializeRecordList()
     {
         showProgressDialog();
-        FirebaseDatabase.getInstance().getReference("record").addListenerForSingleValueEvent(new ValueEventListener()
+        FirebaseDatabase.getInstance().getReference("record").orderByChild("Uid").equalTo(_uid).addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)

@@ -16,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
-        android:hint="SCAN CONTENT"
         android:background="@drawable/retangle_drawable"
+        android:hint="SCAN CONTENT"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
@@ -25,8 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
-        android:hint="SCAN FORMAT"
         android:background="@drawable/retangle_drawable"
+        android:hint="SCAN FORMAT"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <LinearLayout
@@ -42,13 +42,6 @@
             android:text="Scan"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            android:onClick="backOnClick"
-            android:text="Back"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
     </LinearLayout>
 
     <ScrollView
@@ -77,8 +70,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/default_margin"
-                    android:hint="Name"
                     android:background="@drawable/retangle_drawable"
+                    android:hint="Name"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
             </TableRow>
 
@@ -96,8 +89,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/default_margin"
-                    android:hint="UnitPrice"
                     android:background="@drawable/retangle_drawable"
+                    android:hint="UnitPrice"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
             </TableRow>
 
@@ -115,8 +108,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/default_margin"
-                    android:hint="ImageURL"
                     android:background="@drawable/retangle_drawable"
+                    android:hint="ImageURL"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
             </TableRow>
 

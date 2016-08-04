@@ -89,7 +89,8 @@ public class FireFactory
         for (FireRecord fireRecord : fireRecordMap.values())
         {
             Record record = ParseFireRecord(fireRecord);
-            recordList.add(record);
+//            recordList.add(record);
+            recordList.add(0,record);
         }
         return recordList;
     }
