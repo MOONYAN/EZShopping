@@ -28,10 +28,10 @@
 
             <TextView
                 android:id="@+id/product_id_text"
-                android:background="@drawable/retangle_drawable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
+                android:background="@drawable/retangle_drawable"
                 android:hint="ProductId"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
         </TableRow>
@@ -48,10 +48,10 @@
 
             <TextView
                 android:id="@+id/name_text"
-                android:background="@drawable/retangle_drawable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
+                android:background="@drawable/retangle_drawable"
                 android:hint="Name"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
         </TableRow>
@@ -101,8 +101,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/default_margin"
-                    android:hint="Count"
                     android:background="@drawable/retangle_drawable"
+                    android:hint="Count"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
 
                 <ImageButton
@@ -133,8 +133,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                android:hint="Subtotal"
                 android:background="@drawable/retangle_drawable"
+                android:hint="Subtotal"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
         </TableRow>
 
@@ -152,14 +152,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                android:hint="ImageURL"
                 android:background="@drawable/retangle_drawable"
+                android:hint="ImageURL"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
         </TableRow>
 
         <TableRow>
 
-
+            <ImageView
+                android:id="@+id/url_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
         </TableRow>
 
         <TableRow>
@@ -171,8 +176,8 @@
                 android:layout_margin="@dimen/default_margin"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
                 android:onClick="setOnClick"
+                android:scaleType="fitCenter"
                 android:src="@android:drawable/ic_menu_manage"/>
 
             <ImageButton
@@ -182,8 +187,8 @@
                 android:layout_margin="@dimen/default_margin"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
                 android:onClick="deleteOnClick"
+                android:scaleType="fitCenter"
                 android:src="@android:drawable/ic_menu_delete"
                 />
         </TableRow>

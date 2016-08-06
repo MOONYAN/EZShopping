@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +31,7 @@ public class ScanActivity extends BaseActivity
     private TextView _imageURLText;
     private TextView _nameText;
     private TextView _unitPriceText;
+    private ImageView _urlImageView;
     private FireProduct _fireProduct;
     private String _productId;
 
@@ -54,6 +56,7 @@ public class ScanActivity extends BaseActivity
         _imageURLText = (TextView) findViewById(R.id.image_URL_text);
         _nameText = (TextView) findViewById(R.id.name_text);
         _unitPriceText = (TextView) findViewById(R.id.unit_price_text);
+        _urlImageView = (ImageView) findViewById(R.id.url_image_view);
     }
 
     private void processControllers()
@@ -120,6 +123,7 @@ public class ScanActivity extends BaseActivity
         _imageURLText.setText(_fireProduct.ImageURL);
         _nameText.setText(_fireProduct.Name);
         _unitPriceText.setText(_fireProduct.UnitPrice + "");
+        new LoadImageTask(_urlImageView).execute(_fireProduct.ImageURL);
     }
 
     private void setDefaultState()

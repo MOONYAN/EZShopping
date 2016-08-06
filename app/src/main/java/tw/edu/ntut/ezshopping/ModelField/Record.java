@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by Owen on 08/02/2016.
  */
-public class Record
+public class Record implements Comparable<Record>
 {
     private String _uid;
     private String _transactionTime;
@@ -53,5 +53,11 @@ public class Record
     public String getUid()
     {
         return _uid;
+    }
+
+    @Override
+    public int compareTo(Record record)
+    {
+        return record.getTransactionTime().compareTo(_transactionTime);
     }
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import tw.edu.ntut.ezshopping.ModelField.CartItem;
@@ -19,6 +20,7 @@ public class ItemActivity extends AppCompatActivity
     private TextView _countText;
     private TextView _subtotalText;
     private TextView _imageURLText;
+    private ImageView _urlImageView;
     private View _plusButton;
     private View _minusButton;
     private CartItem _item;
@@ -36,7 +38,7 @@ public class ItemActivity extends AppCompatActivity
         Log.d(TAG, "onCreate: ");
         processViews();
         initializeItem();
-        updateUI();
+        initializeUI();
     }
 
     private void initializeItem()
@@ -56,16 +58,23 @@ public class ItemActivity extends AppCompatActivity
         _imageURLText = (TextView) findViewById(R.id.image_URL_text);
         _plusButton = findViewById(R.id.plus_button);
         _minusButton = findViewById(R.id.minus_button);
+        _urlImageView = (ImageView) findViewById(R.id.url_image_view);
+    }
+
+    private void initializeUI()
+    {
+        _productIdText.setText(_item.getProductId());
+        _nameText.setText(_item.getName());
+        _imageURLText.setText(_item.getImageURL());
+        _unitPriceText.setText(_item.getUnitPrice() + "");
+        new LoadImageTask(_urlImageView).execute(_item.getImageURL());
+        updateUI();
     }
 
     private void updateUI()
     {
-        _productIdText.setText(_item.getProductId());
-        _nameText.setText(_item.getName());
-        _unitPriceText.setText(_item.getUnitPrice() + "");
         _countText.setText(_item.getCount() + "");
         _subtotalText.setText(_item.getSubtotal() + "");
-        _imageURLText.setText(_item.getImageURL());
         _minusButton.setEnabled(_item.getCount() > 1);
     }
 

@@ -1,6 +1,7 @@
 package tw.edu.ntut.ezshopping.ModelField;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -89,9 +90,9 @@ public class FireFactory
         for (FireRecord fireRecord : fireRecordMap.values())
         {
             Record record = ParseFireRecord(fireRecord);
-//            recordList.add(record);
-            recordList.add(0,record);
+            recordList.add(record);
         }
+        Collections.sort(recordList);
         return recordList;
     }
 }
