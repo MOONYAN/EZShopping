@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -91,6 +92,7 @@ public class CheckoutActivity extends BaseActivity
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference)
             {
+                Toast.makeText(CheckoutActivity.this,"checkout success!",Toast.LENGTH_SHORT).show();
                 hideProgressDialog();
                 _model.setNewCart();
                 finish();
