@@ -6,7 +6,6 @@ import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,10 +24,7 @@ import tw.edu.ntut.ezshopping.ModelField.Model;
 public class ScanActivity extends BaseActivity
 {
     private static final String TAG = "ScanActivity";
-    private TextView _scanContentText;
-    private TextView _scanFormatText;
-    private TableLayout _resultLayout;
-    private TextView _imageURLText;
+    private TextView _productIdText;
     private TextView _nameText;
     private TextView _unitPriceText;
     private ImageView _urlImageView;
@@ -43,17 +39,14 @@ public class ScanActivity extends BaseActivity
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
         processViews();
         processControllers();
+        startScan();
     }
 
     private void processViews()
     {
-        _scanContentText = (TextView) findViewById(R.id.scan_content_text);
-        _scanFormatText = (TextView) findViewById(R.id.scan_format_text);
-        _resultLayout = (TableLayout) findViewById(R.id.result_layout);
-        _imageURLText = (TextView) findViewById(R.id.image_URL_text);
+        _productIdText = (TextView) findViewById(R.id.product_id_text);
         _nameText = (TextView) findViewById(R.id.name_text);
         _unitPriceText = (TextView) findViewById(R.id.unit_price_text);
         _urlImageView = (ImageView) findViewById(R.id.url_image_view);
@@ -64,7 +57,7 @@ public class ScanActivity extends BaseActivity
 
     }
 
-    public void runOnClick(View view)
+    private void startScan()
     {
         IntentIntegrator integrator = new IntentIntegrator(ScanActivity.this);
         integrator.initiateScan();
@@ -77,20 +70,16 @@ public class ScanActivity extends BaseActivity
         {
             showProgressDialog();
             IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-            String scanContent = scanningResult.getContents();
-            String scanFormat = scanningResult.getFormatName();
-            _scanContentText.setText(scanContent);
-            _scanFormatText.setText(scanFormat);
-            Log.d("----------", "onActivityResult: has something");
-            Toast.makeText(this, "test" + scanContent, Toast.LENGTH_SHORT).show();
-            _productId = scanContent;
+            _productId = scanningResult.getContents();
+            _productIdText.setText(_productId);
+            Toast.makeText(this, _productId, Toast.LENGTH_SHORT).show();
             FirebaseDatabase.getInstance().getReference("product/" + _productId).addListenerForSingleValueEvent(new ValueEventListener()
             {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot)
                 {
                     _fireProduct = dataSnapshot.getValue(FireProduct.class);
-                    if (_fireProduct == null) setDefaultState();
+                    if (_fireProduct == null) finish();
                     else
                     {
                         Log.d(TAG, "onDataChange: " + _fireProduct.Name);
@@ -105,7 +94,7 @@ public class ScanActivity extends BaseActivity
                 {
                     Log.w(TAG, "getProduct:onCancelled", databaseError.toException());
                     _fireProduct = null;
-                    setDefaultState();
+                    finish();
                 }
             });
         }
@@ -113,38 +102,23 @@ public class ScanActivity extends BaseActivity
         {
             Toast.makeText(this, "nothing", Toast.LENGTH_SHORT).show();
             Log.d("----------", "onActivityResult: has nothing");
+            finish();
         }
     }
 
     private void updateUI()
     {
         hideProgressDialog();
-        _resultLayout.setVisibility(View.VISIBLE);
-        _imageURLText.setText(_fireProduct.ImageURL);
         _nameText.setText(_fireProduct.Name);
         _unitPriceText.setText(_fireProduct.UnitPrice + "");
         new LoadImageTask(_urlImageView).execute(_fireProduct.ImageURL);
     }
 
-    private void setDefaultState()
-    {
-        hideProgressDialog();
-        _scanFormatText.setText(null);
-        _scanContentText.setText(null);
-        _productId = null;
-        _fireProduct = null;
-        _resultLayout.setVisibility(View.GONE);
-        _imageURLText.setText(null);
-        _nameText.setText(null);
-        _unitPriceText.setText(null);
-    }
-
     public void addOnClick(View view)
     {
         Cart cart = Model.getInstance().getCart();
-//        cart.addToCart(_productId, _fireProduct);
         cart.addToCart(new CartItem(_productId, _fireProduct));
-        Toast.makeText(this, "complete", Toast.LENGTH_SHORT);
-        setDefaultState();
+        Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

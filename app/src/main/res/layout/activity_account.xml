@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                android:background="@drawable/retangle_drawable"
+                android:background="@drawable/text_drawable"
                 android:text="Gmail"
                 android:textAppearance="?android:attr/textAppearance"/>
 
@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                android:background="@drawable/retangle_drawable"
+                android:background="@drawable/text_drawable"
                 android:textAppearance="?android:attr/textAppearance"
                 tools:text="1787hz@gmail.com"/>
         </TableRow>
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                android:background="@drawable/retangle_drawable"
+                android:background="@drawable/text_drawable"
                 android:text="Uid"
                 android:textAppearance="?android:attr/textAppearance"/>
 
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                android:background="@drawable/retangle_drawable"
+                android:background="@drawable/text_drawable"
                 android:textAppearance="?android:attr/textAppearance"
                 tools:text="123456789abc"/>
         </TableRow>
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                android:background="@drawable/retangle_drawable"
+                android:background="@drawable/text_drawable"
                 android:text="DisplayName"
                 android:textAppearance="?android:attr/textAppearance"/>
 
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                android:background="@drawable/retangle_drawable"
+                android:background="@drawable/text_drawable"
                 android:textAppearance="?android:attr/textAppearance"
                 tools:text="123456789abc"/>
         </TableRow>
@@ -93,7 +93,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
-            android:text="Sign Out"/>
+            android:text="Sign Out"
+            android:background="@drawable/button_drawable"/>
     </LinearLayout>
 
 </LinearLayout>

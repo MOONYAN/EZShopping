@@ -4,135 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/default_margin"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="tw.edu.ntut.ezshopping.ScanActivity">
 
-    <TextView
-        android:id="@+id/scan_content_text"
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margin"
-        android:background="@drawable/retangle_drawable"
-        android:hint="SCAN CONTENT"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:layout_height="0dp"
+        android:stretchColumns="*"
+        android:layout_weight="3"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/scan_format_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margin"
-        android:background="@drawable/retangle_drawable"
-        android:hint="SCAN FORMAT"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:text="ProductId"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <TextView
+                android:id="@+id/product_id_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:background="@drawable/text_drawable"
+                android:hint="ProductId"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:text="Name"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <TextView
+                android:id="@+id/name_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:background="@drawable/text_drawable"
+                android:hint="Name"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:text="UnitPrice"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <TextView
+                android:id="@+id/unit_price_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:background="@drawable/text_drawable"
+                android:hint="UnitPrice"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </TableRow>
+
+    </TableLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/url_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:layout_margin="@dimen/default_margin"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"/>
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_margin="@dimen/default_margin"
-            android:onClick="runOnClick"
-            android:text="Scan"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:onClick="addOnClick"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="Add To Cart"
+            android:background="@drawable/button_drawable"/>
 
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margin">
-
-        <TableLayout
-            android:id="@+id/result_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            android:stretchColumns="*"
-            tools:visibility="visible">
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_margin"
-                    android:text="Name"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-                <TextView
-                    android:id="@+id/name_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_margin"
-                    android:background="@drawable/retangle_drawable"
-                    android:hint="Name"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_margin"
-                    android:text="UnitPrice"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-                <TextView
-                    android:id="@+id/unit_price_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_margin"
-                    android:background="@drawable/retangle_drawable"
-                    android:hint="UnitPrice"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_margin"
-                    android:text="ImageURL"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-                <TextView
-                    android:id="@+id/image_URL_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_margin"
-                    android:background="@drawable/retangle_drawable"
-                    android:hint="ImageURL"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-            </TableRow>
-
-            <TableRow>
-
-                <ImageView
-                    android:id="@+id/url_image_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"/>
-            </TableRow>
-
-            <TableRow>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_margin"
-                    android:onClick="addOnClick"
-                    android:text="Add To Cart"/>
-            </TableRow>
-        </TableLayout>
-    </ScrollView>
 </LinearLayout>

@@ -11,6 +11,6 @@
         android:layout_margin="@dimen/default_margin"
         android:hint="DateTime"
         android:textAlignment="center"
-        android:background="@drawable/retangle_drawable"
+        android:background="@drawable/text_drawable"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 </LinearLayout>

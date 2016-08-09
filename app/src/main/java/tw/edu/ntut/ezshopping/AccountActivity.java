@@ -27,6 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 
+import tw.edu.ntut.ezshopping.ModelField.Model;
 import tw.edu.ntut.ezshopping.ModelField.User;
 
 public class AccountActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener
@@ -213,6 +214,7 @@ public class AccountActivity extends BaseActivity implements GoogleApiClient.OnC
                 updateUI(null);
             }
         });
+        Model.getInstance().setFirebaseId(null);
     }
 
     @Override

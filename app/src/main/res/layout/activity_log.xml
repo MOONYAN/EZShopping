@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:layout_weight="1"
-            android:background="@drawable/retangle_drawable"
+            android:background="@drawable/text_drawable"
             android:text="Total Cost"
             android:textAppearance="?android:attr/textAppearanceLarge"
             />
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:layout_weight="1"
-            android:background="@drawable/retangle_drawable"
+            android:background="@drawable/text_drawable"
             android:hint="Total Cost"
             android:textAppearance="?android:attr/textAppearanceLarge"
             />

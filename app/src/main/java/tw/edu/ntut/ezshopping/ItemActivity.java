@@ -19,7 +19,6 @@ public class ItemActivity extends AppCompatActivity
     private TextView _unitPriceText;
     private TextView _countText;
     private TextView _subtotalText;
-    private TextView _imageURLText;
     private ImageView _urlImageView;
     private View _plusButton;
     private View _minusButton;
@@ -55,7 +54,6 @@ public class ItemActivity extends AppCompatActivity
         _unitPriceText = (TextView) findViewById(R.id.unit_price_text);
         _countText = (TextView) findViewById(R.id.count_text);
         _subtotalText = (TextView) findViewById(R.id.subtotal_text);
-        _imageURLText = (TextView) findViewById(R.id.image_URL_text);
         _plusButton = findViewById(R.id.plus_button);
         _minusButton = findViewById(R.id.minus_button);
         _urlImageView = (ImageView) findViewById(R.id.url_image_view);
@@ -65,7 +63,6 @@ public class ItemActivity extends AppCompatActivity
     {
         _productIdText.setText(_item.getProductId());
         _nameText.setText(_item.getName());
-        _imageURLText.setText(_item.getImageURL());
         _unitPriceText.setText(_item.getUnitPrice() + "");
         new LoadImageTask(_urlImageView).execute(_item.getImageURL());
         updateUI();
