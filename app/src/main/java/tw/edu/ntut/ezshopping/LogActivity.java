@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -21,14 +22,17 @@ import java.util.List;
 
 import tw.edu.ntut.ezshopping.FireField.FireRecord;
 import tw.edu.ntut.ezshopping.ModelField.FireFactory;
+import tw.edu.ntut.ezshopping.ModelField.LogData;
 import tw.edu.ntut.ezshopping.ModelField.Record;
 
 public class LogActivity extends BaseActivity
 {
     private static final String TAG = "CartActivity";
     private RecyclerView _recyclerView;
-    private List<Record> _recordList;
+    private TextView _totalCostText;
+    //    private List<Record> _recordList;
     private String _uid;
+    private LogData _logData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -58,12 +62,16 @@ public class LogActivity extends BaseActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
-                GenericTypeIndicator<HashMap<String, FireRecord>> genericTypeIndicator = new GenericTypeIndicator<HashMap<String, FireRecord>>() {};
+                GenericTypeIndicator<HashMap<String, FireRecord>> genericTypeIndicator = new GenericTypeIndicator<HashMap<String, FireRecord>>()
+                {
+                };
                 HashMap<String, FireRecord> fireRecordMap = dataSnapshot.getValue(genericTypeIndicator);
-                _recordList = FireFactory.ParseRecordList(fireRecordMap);
+                _logData = FireFactory.ParseLogData(fireRecordMap);
+//                _recordList = FireFactory.ParseRecordList(fireRecordMap);
                 Log.d(TAG, "onDataChange: end");
                 hideProgressDialog();
                 initializeRecyclerView();
+                _totalCostText.setText(_logData.getTotalCost() + "");
             }
 
             @Override
@@ -77,11 +85,13 @@ public class LogActivity extends BaseActivity
     private void processViews()
     {
         _recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        _totalCostText = (TextView) findViewById(R.id.total_cost_text);
     }
 
     private void initializeRecyclerView()
     {
-        RecordAdapter adapter = new RecordAdapter(_recordList)
+        final List<Record> recordList = _logData.getRecordList();
+        RecordAdapter adapter = new RecordAdapter(recordList)
         {
             @Override
             public void onBindViewHolder(ViewHolder holder, final int position)
@@ -94,7 +104,7 @@ public class LogActivity extends BaseActivity
                     {
                         Toast.makeText(LogActivity.this, position + "GG", Toast.LENGTH_SHORT);
                         Log.d(TAG, "onClick: " + position);
-                        Record record = _recordList.get(position);
+                        Record record = recordList.get(position);
                         Intent intent = new Intent("ez.ViewCart");
                         intent.putExtra("cart", record.getCart());
                         startActivity(intent);

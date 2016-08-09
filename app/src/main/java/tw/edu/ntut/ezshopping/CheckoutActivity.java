@@ -26,6 +26,7 @@ import tw.edu.ntut.ezshopping.ModelField.Record;
 public class CheckoutActivity extends BaseActivity
 {
     private static final String TAG = "CheckoutActivity";
+    private View _uploadButton;
     private TextView _totalText;
     private RecyclerView _recyclerView;
     private Model _model;
@@ -65,18 +66,15 @@ public class CheckoutActivity extends BaseActivity
 
     private void updateUI()
     {
-        _totalText.setText(_cart.getTotal() +"");
+        _totalText.setText(_cart.getTotal() + "");
+        _uploadButton.setEnabled(_cart.getItemList().size() > 0);
     }
 
     private void processViews()
     {
         _recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         _totalText = (TextView) findViewById(R.id.total_text);
-    }
-
-    public void revertOnClick(View view)
-    {
-        finish();
+        _uploadButton = findViewById(R.id.upload_button);
     }
 
     public void uploadOnClick(View view)
@@ -92,7 +90,7 @@ public class CheckoutActivity extends BaseActivity
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference)
             {
-                Toast.makeText(CheckoutActivity.this,"checkout success!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(CheckoutActivity.this, "checkout success!", Toast.LENGTH_SHORT).show();
                 hideProgressDialog();
                 _model.setNewCart();
                 finish();

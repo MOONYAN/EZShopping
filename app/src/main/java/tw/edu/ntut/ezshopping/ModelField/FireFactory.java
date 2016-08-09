@@ -84,15 +84,20 @@ public class FireFactory
         return record;
     }
 
-    public static List<Record> ParseRecordList(Map<String, FireRecord> fireRecordMap)
+    public static LogData ParseLogData(Map<String, FireRecord> fireRecordMap)
     {
+        LogData logData = new LogData();
         List<Record> recordList = new ArrayList<>();
+        int totalCost = 0;
         for (FireRecord fireRecord : fireRecordMap.values())
         {
+            totalCost += fireRecord.Cart.Total;
             Record record = ParseFireRecord(fireRecord);
             recordList.add(record);
         }
         Collections.sort(recordList);
-        return recordList;
+        logData.setRecordList(recordList);
+        logData.setTotalCost(totalCost);
+        return logData;
     }
 }

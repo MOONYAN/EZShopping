@@ -89,17 +89,6 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/revert_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/default_margin"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:onClick="revertOnClick"
-            android:scaleType="fitCenter"
-            android:src="@android:drawable/ic_menu_revert"/>
-
-        <ImageButton
             android:id="@+id/upload_button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
