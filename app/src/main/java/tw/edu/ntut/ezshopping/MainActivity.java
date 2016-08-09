@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import tw.edu.ntut.ezshopping.ModelField.Model;
+
 public class MainActivity extends AppCompatActivity
 {
     private static final String TAG = "MainActivity";
@@ -16,7 +18,10 @@ public class MainActivity extends AppCompatActivity
     {
         super.onResume();
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preferenceName), MODE_PRIVATE);
-        if (sharedPreferences.getString("FirebaseId", null) == null)
+
+        String firebaseId = sharedPreferences.getString("FirebaseId", null);
+        Model.getInstance().setFirebaseId(firebaseId);
+        if (firebaseId == null)
         {
             Intent intent = new Intent(this, AccountActivity.class);
             startActivity(intent);

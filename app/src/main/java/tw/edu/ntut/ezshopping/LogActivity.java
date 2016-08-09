@@ -1,7 +1,6 @@
 package tw.edu.ntut.ezshopping;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +22,7 @@ import java.util.List;
 import tw.edu.ntut.ezshopping.FireField.FireRecord;
 import tw.edu.ntut.ezshopping.ModelField.FireFactory;
 import tw.edu.ntut.ezshopping.ModelField.LogData;
+import tw.edu.ntut.ezshopping.ModelField.Model;
 import tw.edu.ntut.ezshopping.ModelField.Record;
 
 public class LogActivity extends BaseActivity
@@ -30,7 +30,6 @@ public class LogActivity extends BaseActivity
     private static final String TAG = "CartActivity";
     private RecyclerView _recyclerView;
     private TextView _totalCostText;
-    //    private List<Record> _recordList;
     private String _uid;
     private LogData _logData;
 
@@ -50,8 +49,7 @@ public class LogActivity extends BaseActivity
 
     private void initializeField()
     {
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preferenceName), MODE_PRIVATE);
-        _uid = sharedPreferences.getString("FirebaseId", null);
+        _uid = Model.getInstance().getFirebaseId();
     }
 
     private void initializeRecordList()
@@ -67,7 +65,6 @@ public class LogActivity extends BaseActivity
                 };
                 HashMap<String, FireRecord> fireRecordMap = dataSnapshot.getValue(genericTypeIndicator);
                 _logData = FireFactory.ParseLogData(fireRecordMap);
-//                _recordList = FireFactory.ParseRecordList(fireRecordMap);
                 Log.d(TAG, "onDataChange: end");
                 hideProgressDialog();
                 initializeRecyclerView();

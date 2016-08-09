@@ -39,6 +39,8 @@ public class AccountActivity extends BaseActivity implements GoogleApiClient.OnC
     private TextView _gmailTextView;
     private TextView _uidTextView;
     private TextView _displayNameTextView;
+    private View _signInButton;
+    private View _signOutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -98,11 +100,13 @@ public class AccountActivity extends BaseActivity implements GoogleApiClient.OnC
         _gmailTextView = (TextView) findViewById(R.id.gmail_text);
         _uidTextView = (TextView) findViewById(R.id.uid_text);
         _displayNameTextView = (TextView) findViewById(R.id.display_name_text);
+        _signInButton = findViewById(R.id.sign_in_button);
+        _signOutButton = findViewById(R.id.sign_out_button);
     }
 
     private void processControllers()
     {
-        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener()
+        _signInButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -110,7 +114,7 @@ public class AccountActivity extends BaseActivity implements GoogleApiClient.OnC
                 signIn();
             }
         });
-        findViewById(R.id.sign_out_button).setOnClickListener(new View.OnClickListener()
+        _signOutButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -229,23 +233,20 @@ public class AccountActivity extends BaseActivity implements GoogleApiClient.OnC
             editor.putString("FirebaseId", user.getUid());
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             database.getReference("user").child(user.getUid()).setValue(new User(user));
-
-            _gmailTextView.setText(getString(R.string.gmail_format_string, user.getEmail()));
-            _uidTextView.setText(getString(R.string.uid_format_string, user.getUid()));
-            _displayNameTextView.setText(getString(R.string.displayName_format_string, user.getDisplayName()));
-            findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-            findViewById(R.id.sign_out_layout).setVisibility(View.VISIBLE);
+            _gmailTextView.setText(user.getEmail());
+            _uidTextView.setText(user.getUid());
+            _displayNameTextView.setText(user.getDisplayName());
+            _signInButton.setVisibility(View.GONE);
+            _signOutButton.setVisibility(View.VISIBLE);
         }
         else
         {
             editor.clear();
-
             _gmailTextView.setText(null);
             _uidTextView.setText(null);
             _displayNameTextView.setText(null);
-
-            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-            findViewById(R.id.sign_out_layout).setVisibility(View.GONE);
+            _signInButton.setVisibility(View.VISIBLE);
+            _signOutButton.setVisibility(View.GONE);
         }
         editor.apply();
     }

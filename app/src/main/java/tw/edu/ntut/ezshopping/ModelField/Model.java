@@ -7,7 +7,7 @@ public class Model
 {
     private static Model _model = new Model();
     private Cart _cart;
-    private User _user;
+    private String _firebaseId;
 
     private Model()
     {
@@ -17,6 +17,16 @@ public class Model
     public static Model getInstance()
     {
         return _model;
+    }
+
+    public String getFirebaseId()
+    {
+        return _firebaseId;
+    }
+
+    public void setFirebaseId(String firebaseId)
+    {
+        _firebaseId = firebaseId;
     }
 
     public Cart getCart()

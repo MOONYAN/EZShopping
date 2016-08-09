@@ -1,6 +1,5 @@
 package tw.edu.ntut.ezshopping;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
@@ -51,8 +50,7 @@ public class CheckoutActivity extends BaseActivity
     private void initializeField()
     {
         _model = Model.getInstance();
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preferenceName), MODE_PRIVATE);
-        _uid = sharedPreferences.getString("FirebaseId", null);
+        _uid = _model.getFirebaseId();
         _cart = _model.getCart();
     }
 
