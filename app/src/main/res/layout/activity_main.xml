@@ -11,67 +11,101 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="tw.edu.ntut.ezshopping.MainActivity">
 
-    <ImageButton
-        android:id="@+id/account_image_button"
-        android:layout_margin="8sp"
-        android:layout_height="0dp"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ez_account"
-        android:layout_gravity="center_horizontal"
-        android:onClick="accountOnClick"/>
-
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="*">
 
-        <TableRow>
+        <TableRow android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/dm_image_button"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/default_margin"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:onClick="dmOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ez_dm"/>
+
+            <ImageButton
+                android:id="@+id/account_image_button"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/default_margin"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:onClick="accountOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ez_account"/>
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
 
             <ImageButton
                 android:id="@+id/scan_image_button"
-                android:layout_margin="@dimen/default_margin"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/default_margin"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:onClick="scanOnClick"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ez_scanner"
-                android:onClick="scanOnClick"/>
+                android:src="@drawable/ez_scanner"/>
 
             <ImageButton
                 android:id="@+id/cart_image_button"
-                android:layout_margin="@dimen/default_margin"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/default_margin"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:onClick="cartOnClick"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ez_cart"
-                android:onClick="cartOnClick"/>
+                android:src="@drawable/ez_cart"/>
         </TableRow>
 
-        <TableRow>
+        <TableRow android:layout_weight="1">
 
             <ImageButton
                 android:id="@+id/log_image_button"
-                android:layout_margin="@dimen/default_margin"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/default_margin"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:onClick="logOnClick"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ez_log"
-                android:onClick="logOnClick"/>
+                android:src="@drawable/ez_log"/>
 
             <ImageButton
                 android:id="@+id/checkout_image_button"
-                android:layout_margin="@dimen/default_margin"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/default_margin"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:onClick="checkoutOnClick"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ez_checkout"
-                android:onClick="checkoutOnClick"/>
+                android:src="@drawable/ez_checkout"/>
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/mail_image_button"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/default_margin"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:onClick="mailOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ez_mail"/>
+
+            <ImageButton
+                android:id="@+id/call_image_button"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/default_margin"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:onClick="callOnClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ez_call"/>
         </TableRow>
     </TableLayout>
 
