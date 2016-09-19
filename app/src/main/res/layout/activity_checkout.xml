@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/default_margin"
-        android:layout_weight="7"
+        android:layout_weight="5"
         android:scrollbars="vertical">
 
     </android.support.v7.widget.RecyclerView>
@@ -81,6 +81,32 @@
             android:textAppearance="?android:attr/textAppearanceLarge"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:layout_weight="1"
+            android:background="@drawable/text_drawable"
+            android:text="Host IP"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <EditText
+            android:id="@+id/host_ip_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:layout_weight="2"
+            android:background="@drawable/text_drawable"
+            android:hint="Host IP"
+            android:text="192.168.1.101"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,13 +115,13 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/upload_button"
+            android:id="@+id/transaction_button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/default_margin"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:onClick="uploadOnClick"
+            android:onClick="transactionOnClick"
             android:scaleType="fitCenter"
             android:src="@android:drawable/ic_menu_upload"
             android:background="@drawable/button_drawable"/>

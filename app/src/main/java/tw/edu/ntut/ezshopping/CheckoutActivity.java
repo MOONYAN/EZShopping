@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class CheckoutActivity extends BaseActivity
 {
     private static final String TAG = "CheckoutActivity";
     private View _uploadButton;
+    private EditText _hostIpText;
     private TextView _totalText;
     private RecyclerView _recyclerView;
     private Model _model;
@@ -72,7 +74,8 @@ public class CheckoutActivity extends BaseActivity
     {
         _recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         _totalText = (TextView) findViewById(R.id.total_text);
-        _uploadButton = findViewById(R.id.upload_button);
+        _uploadButton = findViewById(R.id.transaction_button);
+        _hostIpText = (EditText) findViewById(R.id.host_ip_text);
     }
 
     public void uploadOnClick(View view)
@@ -94,5 +97,24 @@ public class CheckoutActivity extends BaseActivity
                 finish();
             }
         });
+    }
+
+    public void transactionOnClick(View view)
+    {
+        showProgressDialog();
+        new DealAsyncTask(_hostIpText.getText().toString(), new DealAsyncTask.DealResponse()
+        {
+            @Override
+            public void onResponse(String responseMessage)
+            {
+                hideProgressDialog();
+                Toast.makeText(CheckoutActivity.this, responseMessage, Toast.LENGTH_SHORT).show();
+                if (responseMessage.equals("Success"))
+                {
+                    _model.setNewCart();
+                    finish();
+                }
+            }
+        }).execute(new Record(_uid, _model.getCart()));
     }
 }
