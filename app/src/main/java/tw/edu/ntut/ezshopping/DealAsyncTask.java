@@ -14,12 +14,12 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
-import tw.edu.ntut.ezshopping.ModelField.Record;
+import tw.edu.ntut.ezshopping.FireField.FireRecord;
 
 /**
  * Created by Owen on 09/11/2016.
  */
-public class DealAsyncTask extends AsyncTask<Record, Void, String>
+public class DealAsyncTask extends AsyncTask<FireRecord, Void, String>
 {
     private final static int PORT = 11000;
     private final static String TAG = "DealAsyncTask";
@@ -34,9 +34,9 @@ public class DealAsyncTask extends AsyncTask<Record, Void, String>
     }
 
     @Override
-    protected String doInBackground(Record... records)
+    protected String doInBackground(FireRecord... records)
     {
-        Record record = records[0];
+        FireRecord record = records[0];
         String passString = new Gson().toJson(record);
         String responseString;
         try
