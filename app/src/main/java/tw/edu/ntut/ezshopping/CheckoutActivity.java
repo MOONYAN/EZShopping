@@ -101,12 +101,30 @@ public class CheckoutActivity extends BaseActivity
         });
     }
 
+    private void uploadFireRecord(FireRecord fireRecord)
+    {
+//        showProgressDialog();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("record").push();
+        Log.d(TAG, "uploadOnClick: " + reference.getKey());
+        reference.setValue(fireRecord, new DatabaseReference.CompletionListener()
+        {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference)
+            {
+                Toast.makeText(CheckoutActivity.this, "checkout success!", Toast.LENGTH_SHORT).show();
+                hideProgressDialog();
+                _model.setNewCart();
+                finish();
+            }
+        });
+    }
+
     public void transactionOnClick(View view)
     {
         showProgressDialog();
 
         Record record = new Record(_uid, _model.getCart());
-        FireRecord fireRecord = FireFactory.ParseFireRecord(record);
+        final FireRecord fireRecord = FireFactory.ParseFireRecord(record);
 
         new DealAsyncTask(_hostIpText.getText().toString(), new DealAsyncTask.DealResponse()
         {
@@ -117,8 +135,9 @@ public class CheckoutActivity extends BaseActivity
                 Toast.makeText(CheckoutActivity.this, responseMessage, Toast.LENGTH_SHORT).show();
                 if (responseMessage.equals("Success"))
                 {
-                    _model.setNewCart();
-                    finish();
+                    uploadFireRecord(fireRecord);
+//                    _model.setNewCart();
+//                    finish();
                 }
             }
         }).execute(fireRecord);

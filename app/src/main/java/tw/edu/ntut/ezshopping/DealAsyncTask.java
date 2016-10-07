@@ -27,6 +27,8 @@ public class DealAsyncTask extends AsyncTask<FireRecord, Void, String>
     private String _hostIp;
     private DealResponse _responseListener;
 
+
+
     public DealAsyncTask(String hostIp, DealResponse responseListener)
     {
         _hostIp = hostIp;
